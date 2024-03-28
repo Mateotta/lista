@@ -1,0 +1,40 @@
+import os # A biblioteca OS Python oferece uma vasta gama de funcionalidades para interação com o sistema operacional
+#Voce pode criar, copiar, renomear e excluir arquivos e pastas, alem de executar comandos no sistema, gerenciar processos
+#e obter informações sobre o sistrema.
+
+lista = [] # Criando uma lista vazia
+
+while True: #Enquanto for verdade
+    print("Selecione uma opcao")#Escreva
+    opcao = input("[i]nserir [a]pagar [l]istar: ")# Variavel = digite("[i]p\ inserir, [a]p\apagar, [l]p\listar")
+
+    if opcao == "i":#Verficando se minha variavel foi digitada
+        os.system("cls")#armazenamento e limpando meu codigo
+        valor = input("valor: ")#armazenamento um valor digitado
+        lista.append(valor)#Adicionando um item na minha lista
+    elif opcao == "a": #Verificando se minha variavel "a" foi digitada (ou seja se existir mais de uma opção).
+        indice_str = input("escolha o indice para apagar: ")
+
+        try: #Para tratar um erro usamos o try
+            indice = int(indice_str) #Estou armazenando um numero inteiro
+            del lista[indice] #Estou deletando um numero da minha lista
+
+        except ValueError: #Estou tratando um erro caso o valor não seja o esperado
+            print("Por favor, digite numero inteiro.") #Escreva ("digite um numero inteiro")
+
+        except IndexError:#Tratando um erro Index_str caso não há
+            print("Este Indice nao existe na lista")
+
+        except Exception: #Tratando um erro desconhecido
+            print("Erro desconhecido")
+
+    elif opcao == "l": #Verificando se minha variavel "1" foi digitada(ou seja se existir mais de uma opcao)
+        os.system("cls")#Limpando meu terminal
+
+        if len(lista) == 0: #Comparando e contando minha linha
+            print("Nada para listar")
+
+        for i, valor in enumerate(lista): #Repitir e enumerar minha lista
+            print(i, valor)
+    else: # Caso for falso
+        print("Por favor, escolha i, a ou l.")
